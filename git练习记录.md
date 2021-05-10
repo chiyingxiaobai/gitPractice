@@ -1,3 +1,5 @@
+[练习教程网站][https://www.liaoxuefeng.com/wiki/896043488029600]
+
 ```git
 git init  初始化
 ```
@@ -23,17 +25,39 @@ $ git remote rm origin
 ```
 
 ```git
-git add git练习记录.md 添加文集到仓库 
+git add git练习记录.md #添加文件到仓库 
 ```
+
+`git commit`命令，`-m`后面输入的是本次提交的说明
 
 ```git
 git commit -m "提交git练习记录文件"
 ```
 
 ```git
-git push -u origin master 提交到远程仓库
+git push -u origin master #提交到远程仓库
 ```
 
 
 
-这里是一个PR
+这里是一个PR  
+
+GitHub PR 
+
+多人协作练习
+
+使用`git pull` 命令拉取远程仓库的代码
+
+```git
+git pull
+```
+
+### 版本回退练习
+
+1 
+
+```
+Git is a version control system.
+Git is free software
+```
+
