@@ -54,10 +54,14 @@ git pull
 
 ### 版本回退练习
 
-1 
+2 
 
 ```
-Git is a version control system.
+Git is a distributed version control system.
 Git is free software
 ```
+
+`git status`命令可以让我们时刻掌握仓库当前的状态
+
+`git diff`查看修改，查看difference，显示的格式正是Unix通用的diff格式，可以从上面的命令输出看到，我们在第一行添加了一个`distributed`单词。
 
