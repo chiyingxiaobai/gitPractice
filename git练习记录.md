@@ -67,6 +67,15 @@ Git is free software distributed under the GPL.
 
 `git log`命令显示从最近到最远的提交日志，我们可以看到3次提交
 
+如果嫌输出信息太多，看得眼花缭乱的，可以试试加上`--pretty=oneline`参数：
+
+```git
+$ git log --pretty=oneline
+1094adb7b9b3807259d8cb349e7df1d4d6477073 (HEAD -> master) append GPL
+e475afc93c209a690c39c13a46716e8fa000c366 add distributed
+eaadf4e385e865d25c48e7ca9c8395c3f7dfaef0 wrote a readme file
+```
+
 在Git中，用`HEAD`表示当前版本，也就是最新的提交`1094adb...`（注意我的提交ID和你的肯定不一样），上一个版本就是`HEAD^`，上上一个版本就是`HEAD^^`，当然往上100个版本写100个`^`比较容易数不过来，所以写成`HEAD~100`。
 
 使用`git reset`命令回退到上一个版本
@@ -78,7 +87,7 @@ HEAD is now at e475afc add distributed
 
 找到指定版本的`commit id`,可以指定回到未来的某个版本
 
-```
+```git
 $ git reset --hard 1094a
 HEAD is now at 83b0afe append GPL
 ```
@@ -92,3 +101,4 @@ HEAD is now at 83b0afe append GPL
 - 要重返未来，用`git reflog`查看命令历史，以便确定要回到未来的哪个版本。
 
 使用git log 查看历史后，输入 `q`返回git命令行，就可以继续练习git命令了
+
