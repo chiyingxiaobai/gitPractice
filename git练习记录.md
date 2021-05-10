@@ -58,7 +58,7 @@ git pull
 
 ```
 Git is a distributed version control system.
-Git is free software
+Git is free software distributed under the GPL.
 ```
 
 `git status`命令可以让我们时刻掌握仓库当前的状态
