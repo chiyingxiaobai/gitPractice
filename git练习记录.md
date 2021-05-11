@@ -38,6 +38,14 @@ git commit -m "提交git练习记录文件"
 git push -u origin master #提交到远程仓库
 ```
 
+使用命令`git push -u origin master`第一次推送master分支的所有内容；
+
+此后，每次本地提交后，只要有必要，就可以使用命令`git push origin master`推送最新修改；
+
+```
+git push origin master
+```
+
 
 
 这里是一个PR  
@@ -101,4 +109,20 @@ HEAD is now at 83b0afe append GPL
 - 要重返未来，用`git reflog`查看命令历史，以便确定要回到未来的哪个版本。
 
 使用git log 查看历史后，输入 `q`返回git命令行，就可以继续练习git命令了
+
+### 工作区和暂存区
+
+隐藏目录`.git`，这个不算工作区，而是Git的版本库。
+
+![git-repo](https://www.liaoxuefeng.com/files/attachments/919020037470528/0)
+
+们把文件往Git版本库里添加的时候，是分两步执行的：
+
+第一步是用`git add`把文件添加进去，实际上就是把文件修改添加到暂存区；
+
+第二步是用`git commit`提交更改，实际上就是把暂存区的所有内容提交到当前分支。
+
+我们创建Git版本库时，Git自动为我们创建了唯一一个`master`分支，所以，现在，`git commit`就是往`master`分支上提交更改。
+
+你可以简单理解为，需要提交的文件修改通通放到暂存区，然后，一次性提交暂存区的所有修改。
 
