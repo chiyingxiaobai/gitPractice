@@ -126,3 +126,6 @@ HEAD is now at 83b0afe append GPL
 
 你可以简单理解为，需要提交的文件修改通通放到暂存区，然后，一次性提交暂存区的所有修改。
 
+### 管理修改
+
+用`git diff HEAD -- readme.txt`命令可以查看工作区和版本库里面最新版本的区别
