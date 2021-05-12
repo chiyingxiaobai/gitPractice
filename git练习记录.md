@@ -129,3 +129,21 @@ HEAD is now at 83b0afe append GPL
 ### 管理修改
 
 用`git diff HEAD -- readme.txt`命令可以查看工作区和版本库里面最新版本的区别
+
+```git
+$ git diff HEAD -- readme.txt
+diff --git a/readme.txt b/readme.txt
+index edff317..e4b910f 100644
+--- a/readme.txt
++++ b/readme.txt
+@@ -2,4 +2,4 @@
+ Git is a distributed version control system
+ Git is a free software distributed under the GPL
+ Git has a mutable index called stage
+-Git tracks changes
+\ No newline at end of file
++Git tracks changes of files
+\ No newline at end of file
+
+```
+
