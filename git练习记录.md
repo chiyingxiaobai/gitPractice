@@ -1,5 +1,11 @@
 [练习教程网站][https://www.liaoxuefeng.com/wiki/896043488029600]
 
+[toc]
+
+## 基础git操作
+
+
+
 ```git
 git init  初始化
 ```
@@ -25,7 +31,13 @@ $ git remote rm origin
 ```
 
 ```git
-git add git练习记录.md #添加文件到仓库 
+git add git练习记录.md #添加文件到暂存区 
+```
+
+`git add .`添加所有修改的文件到暂存区
+
+```
+git add .
 ```
 
 `git commit`命令，`-m`后面输入的是本次提交的说明
@@ -59,6 +71,8 @@ GitHub PR
 ```git
 git pull
 ```
+
+## git本地仓库练习
 
 ### 版本回退练习
 
@@ -100,7 +114,7 @@ $ git reset --hard 1094a
 HEAD is now at 83b0afe append GPL
 ```
 
-### 小结
+#### 小结
 
 现在总结一下：
 
@@ -168,3 +182,66 @@ git checkout -- test.txt
 > 注意：从来没有被添加到版本库就被删除的文件，是无法恢复的！
 
 命令`git rm`用于删除一个文件。如果一个文件已经被提交到版本库，那么你永远不用担心误删，但是要小心，你只能恢复文件到最新版本，你会丢失**最近一次提交后你修改的内容**。
+
+## 远程仓库
+
+###　添加远程仓库
+
+把本地库的内容推送到远程，用`git push`命令，实际上是把当前分支`master`推送到远程。
+
+新建远程库是空的，我们第一次推送`master`分支时，加上了`-u`参数，Git不但会把本地的`master`分支内容推送的远程新的`master`分支，还会把本地的`master`分支和远程的`master`分支关联起来，在以后的推送或者拉取时就可以简化命令。
+
+#### SSH警告
+
+当你第一次使用Git的`clone`或者`push`命令连接GitHub时，会得到一个警告：
+
+```
+The authenticity of host 'github.com (xx.xx.xx.xx)' can't be established.
+RSA key fingerprint is xx.xx.xx.xx.xx.
+Are you sure you want to continue connecting (yes/no)?
+```
+
+这是因为Git使用SSH连接，而SSH连接在第一次验证GitHub服务器的Key时，需要你确认GitHub的Key的指纹信息是否真的来自GitHub的服务器，输入`yes`回车即可。
+
+Git会输出一个警告，告诉你已经把GitHub的Key添加到本机的一个信任列表里了：
+
+```
+Warning: Permanently added 'github.com' (RSA) to the list of known hosts.
+```
+
+这个警告只会出现一次，后面的操作就不会有任何警告了。
+
+#### 小结
+
+要关联一个远程库，使用命令
+
+```
+git remote add origin git@server-name:path/repo-name.git
+```
+
+关联一个远程库时必须给远程库指定一个名字，`origin`是默认习惯命名；
+
+关联后，使用命令`git push -u origin master`第一次推送master分支的所有内容；
+
+此后，每次本地提交后，只要有必要，就可以使用命令`git push origin master`推送最新修改；
+
+第一次推送
+
+```
+git push -u origin master
+```
+
+n+1(n>=0)次推送
+
+```
+git push origin master
+```
+
+#### 从远程库克隆
+
+使用`git clone`克隆仓库
+
+```
+git clone git@github.com:michaelliao/gitskills.git
+```
+
