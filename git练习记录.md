@@ -368,3 +368,37 @@ Git鼓励大量使用分支：
 
 删除分支：`git branch -d <name>`
 
+### 解决冲突
+
+当合并分支冲突时，Git用`<<<<<<<`，`=======`，`>>>>>>>`标记出不同分支的内容。
+
+解决冲突时我们需要手动编辑冲突文件，删掉上述的git冲突标志，修改冲突文件内容为我们
+
+想要的内容。然后再提交冲突文件合并分支就成功了。
+
+用带参数的`git log`也可以看到分支的合并情况：
+
+```git
+$ git log --graph --pretty=oneline --abbrev-commit
+*   cf810e4 (HEAD -> master) conflict fixed
+|\  
+| * 14096d0 (feature1) AND simple
+* | 5dc6824 & simple
+|/  
+* b17d20e branch test
+* d46f35e (origin/master) remove test.txt
+* b84166e add test.txt
+* 519219b git tracks changes
+* e43a48b understand how stage works
+* 1094adb append GPL
+* e475afc add distributed
+* eaadf4e wrote a readme file
+```
+
+#### 小结
+
+当Git无法自动合并分支时，就必须首先解决冲突。解决冲突后，再提交，合并完成。
+
+解决冲突就是把Git合并失败的文件手动编辑为我们希望的内容，再提交。
+
+用`git log --graph`命令可以看到分支合并图。
