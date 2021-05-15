@@ -395,6 +395,22 @@ $ git log --graph --pretty=oneline --abbrev-commit
 * eaadf4e wrote a readme file
 ```
 
+我的练习
+
+```git
+$ git log --graph --pretty=oneline --abbrev-commit
+*   0f177ae (HEAD -> master) conflict fixed
+|\
+| * 96f0520 (featurel) AND simple
+* | 0237d9f & simple
+|/
+* f289f77 开始合并冲突练习
+* c51a323 (origin/master) 创建合并分支练习
+* 641ce2e 远程仓库笔记
+* fc61493 deleted test.txt
+
+```
+
 #### 小结
 
 当Git无法自动合并分支时，就必须首先解决冲突。解决冲突后，再提交，合并完成。
