@@ -418,3 +418,15 @@ $ git log --graph --pretty=oneline --abbrev-commit
 解决冲突就是把Git合并失败的文件手动编辑为我们希望的内容，再提交。
 
 用`git log --graph`命令可以看到分支合并图。
+
+### 分支管理策略
+
+通常，合并分支时，如果可能，Git会用`Fast forward`模式，但这种模式下，删除分支后，会丢掉分支信息。
+
+如果要强制禁用`Fast forward`模式，Git就会在merge时生成一个新的commit，这样，从分支历史上就可以看出分支信息。
+
+我们实战一下`--no-ff`方式的`git merge`，请注意`--no-ff`参数，表示禁用`Fast forward`
+
+因为本次合并要创建一个新的commit，所以加上`-m`参数，把commit描述写进去。
+
+合并后，我们用`git log`看看分支历史
