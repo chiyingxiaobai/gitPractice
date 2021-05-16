@@ -430,3 +430,41 @@ $ git log --graph --pretty=oneline --abbrev-commit
 因为本次合并要创建一个新的commit，所以加上`-m`参数，把commit描述写进去。
 
 合并后，我们用`git log`看看分支历史
+
+### Bug分支
+
+每个bug都可以通过一个新的临时分支来修复，修复后，合并分支，然后将临时分支删除。
+
+Git还提供了一个`stash`功能，可以把当前工作现场“储藏”起来，等以后恢复现场后继续工作。
+
+```
+git stash
+```
+
+使用`git stash`保存后，用`git status`查看工作区，就是干净的（除非有没有被Git管理的文件），因此可以放心地创建分支来修复bug。
+
+修复bug之后用`git stash list`命令查看之前保存的工作区
+
+工作现场还在，Git把stash内容存在某个地方了，但是需要恢复一下，有两个办法：
+
+一是用`git stash apply`恢复，但是恢复后，stash内容并不删除，你需要用`git stash drop`来删除；
+
+另一种方式是用`git stash pop`，恢复的同时把stash内容也删了
+
+你可以多次stash，恢复的时候，先用`git stash list`查看，然后恢复指定的stash，用命令：
+
+```
+git stash apply stash@{0}
+```
+
+当我们想在其他分支重复修复这个bug的操作，可以将修复bug的提交复制到需要的分支。
+
+Git专门提供了一个`cherry-pick`命令，让我们能复制一个特定的提交到当前分支：
+
+### 小结
+
+修复bug时，我们会通过创建新的bug分支进行修复，然后合并，最后删除；
+
+当手头工作没有完成时，先把工作现场`git stash`一下，然后去修复bug，修复后，再`git stash pop`，回到工作现场；
+
+在master分支上修复的bug，想要合并到当前dev分支，可以用`git cherry-pick <commit>`命令，把bug提交的修改“复制”到当前分支，避免重复劳动。
