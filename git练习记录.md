@@ -472,3 +472,75 @@ Git专门提供了一个`cherry-pick`命令，让我们能复制一个特定的�
 
 
 如果要丢弃一个没有被合并过的分支，可以通过`git branch -D <name>`强行删除。
+
+### 多人协作
+
+当你从远程仓库克隆时，实际上Git自动把本地的`master`分支和远程的`master`分支对应起来了，并且，远程仓库的默认名称是`origin`。
+
+要查看远程库的信息，用`git remote`：
+
+```
+git remote
+origin
+```
+
+或者，用`git remote -v`显示更详细的信息：
+
+```
+$ git remote -v
+origin  git@github.com:michaelliao/learngit.git (fetch)
+origin  git@github.com:michaelliao/learngit.git (push)
+```
+
+上面显示了可以抓取和推送的`origin`的地址。如果没有推送权限，就看不到push的地址。
+
+#### 推送分支
+
+推送分支，就是把该分支上的所有本地提交推送到远程库。推送时，要指定本地分支，这样，Git就会把该分支推送到远程库对应的远程分支上：
+
+```
+$ git push origin master
+```
+
+如果要推送其他分支，比如`dev`，就改成：
+
+```
+$ git push origin dev
+```
+
+#### 抓取分支
+
+在本地创建`dev`分支，并将远程origin上的`dev`分支内容复制到本地dev分支上。
+
+```
+$ git branch -c dev origin/dev
+```
+
+`git pull`把最新的提交从`origin`抓下来。
+
+设置本地`dev`和`origin/dev`的链接：
+
+```
+git branch --set-upstream-to=origin/dev dev
+Branch 'dev' set up to track remote branch 'dev' from 'origin'.
+```
+
+多人协作的工作模式通常是这样：
+
+1. 首先，可以试图用`git push origin <branch-name>`推送自己的修改；
+2. 如果推送失败，则因为远程分支比你的本地更新，需要先用`git pull`试图合并；
+3. 如果合并有冲突，则解决冲突，并在本地提交；
+4. 没有冲突或者解决掉冲突后，再用`git push origin <branch-name>`推送就能成功！
+
+如果`git pull`提示`no tracking information`，则说明本地分支和远程分支的链接关系没有创建，用命令`git branch --set-upstream-to <branch-name> origin/<branch-name>`。
+
+这就是多人协作的工作模式，一旦熟悉了，就非常简单。
+
+#### 小结
+
+- 查看远程库信息，使用`git remote -v`；
+- 本地新建的分支如果不推送到远程，对其他人就是不可见的；
+- 从本地推送分支，使用`git push origin branch-name`，如果推送失败，先用`git pull`抓取远程的新提交；
+- 在本地创建和远程分支对应的分支，使用`git checkout -b branch-name origin/branch-name`，本地和远程分支的名称最好一致；
+- 建立本地分支和远程分支的关联，使用`git branch --set-upstream branch-name origin/branch-name`；
+- 从远程抓取分支，使用`git pull`，如果有冲突，要先处理冲突。
