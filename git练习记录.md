@@ -513,7 +513,7 @@ $ git push origin dev
 在本地创建`dev`分支，并将远程origin上的`dev`分支内容复制到本地dev分支上。
 
 ```
-$ git branch -c dev origin/dev
+$ git switch -c dev origin/dev
 ```
 
 `git pull`把最新的提交从`origin`抓下来。
