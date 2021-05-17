@@ -468,3 +468,7 @@ Git专门提供了一个`cherry-pick`命令，让我们能复制一个特定的�
 当手头工作没有完成时，先把工作现场`git stash`一下，然后去修复bug，修复后，再`git stash pop`，回到工作现场；
 
 在master分支上修复的bug，想要合并到当前dev分支，可以用`git cherry-pick <commit>`命令，把bug提交的修改“复制”到当前分支，避免重复劳动。
+
+
+
+如果要丢弃一个没有被合并过的分支，可以通过`git branch -D <name>`强行删除。
