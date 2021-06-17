@@ -1,0 +1,17 @@
+[user]
+	email = 邮箱
+	name = 名称
+[alias]
+	ad = add
+	br = branch
+	cf = config
+	ck = checkout
+	cm = commit
+	cl = clone
+	ps = push
+	me = merge
+	pl = pull
+	ss = status
+	sw = switch
+	last = log 1
+	
