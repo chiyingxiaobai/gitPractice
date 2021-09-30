@@ -4,6 +4,7 @@
 [alias]
 	ad = add
 	br = branch
+	cc = checkout --
 	cf = config
 	ck = checkout
 	cm = commit
