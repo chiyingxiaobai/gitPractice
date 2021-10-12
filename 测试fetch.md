@@ -8,9 +8,7 @@ git diff temp
 
 git merge temp
 
-<<<<<<< HEAD
 这里造成冲突
-=======
-测试有冲突的fetch
->>>>>>> refs/remotes/origin/master
+测试有冲突的fetch]
+合并冲突
 
