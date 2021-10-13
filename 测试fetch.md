@@ -8,4 +8,8 @@ git diff temp
 
 git merge temp
 
+<<<<<<< HEAD
 这里造成冲突
+=======
+测试有冲突的fetch
+>>>>>>> 27b6290 (共同修改内容)
